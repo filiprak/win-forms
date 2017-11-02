@@ -22,6 +22,33 @@ namespace win_forms
             bindingSource1.Add(new SongModel("Paradise", "Coldplay", "soft-rock", 2011));
             bindingSource1.Add(new SongModel("Nothing Else Matters", "Metallica", "rock-metal", 1991));
             bindingSource1.Add(new SongModel("Sweet Child O'Mine", "Guns N'Roses", "rock", 1987));
+            bindingSource1.Add(new SongModel("Paradise", "Coldplay", "soft-rock", 2011));
+            bindingSource1.Add(new SongModel("Nothing Else Matters", "Metallica", "rock-metal", 1991));
+            bindingSource1.Add(new SongModel("Paradise", "Coldplay", "soft-rock", 2011));
+            bindingSource1.Add(new SongModel("Nothing Else Matters", "Metallica", "rock-metal", 1991));
+            bindingSource1.Add(new SongModel("Paradise", "Coldplay", "soft-rock", 2011));
+            bindingSource1.Add(new SongModel("Nothing Else Matters", "Metallica", "rock-metal", 1991));
+            bindingSource1.Add(new SongModel("Sweet Child O'Mine", "Guns N'Roses", "rock", 1987));
+            bindingSource1.Add(new SongModel("Paradise", "Coldplay", "soft-rock", 2011));
+            bindingSource1.Add(new SongModel("Nothing Else Matters", "Metallica", "rock-metal", 1991));
+            bindingSource1.Add(new SongModel("Sweet Child O'Mine", "Guns N'Roses", "rock", 1987));
+            bindingSource1.Add(new SongModel("Sweet Child O'Mine", "Guns N'Roses", "rock", 1987));
+            bindingSource1.Add(new SongModel("Sweet Child O'Mine", "Guns N'Roses", "rock", 1987));
+
+            OpenChildForm();
+        }
+
+        private void OpenChildForm() {
+            ChildForm newMDIChild = new ChildForm(bindingSource1);
+            // Set the Parent Form of the Child window.  
+            newMDIChild.MdiParent = this;
+            // Display the new form.
+            newMDIChild.Show();
+        }
+
+        public int GetNumChildren()
+        {
+            return this.MdiChildren.Length;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -36,23 +63,14 @@ namespace win_forms
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChildForm newMDIChild = new ChildForm(bindingSource1);
-            // Set the Parent Form of the Child window.  
-            newMDIChild.MdiParent = this;
-            // Display the new form.  
-            newMDIChild.Show();  
+            OpenChildForm();
         }
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void bindingSource1_BindingComplete(object sender, BindingCompleteEventArgs e)
-        {
-            if (e.BindingCompleteContext == BindingCompleteContext.DataSourceUpdate
+            /*if (e.BindingCompleteContext == BindingCompleteContext.DataSourceUpdate
                 && e.Exception == null)
-                e.Binding.BindingManagerBase.EndCurrentEdit();
+                e.Binding.BindingManagerBase.EndCurrentEdit();*/
         }
 
     }
