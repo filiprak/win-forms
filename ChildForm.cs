@@ -44,5 +44,42 @@ namespace win_forms
                 }
             }
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SongForm addForm = new SongForm(null);
+            if( addForm.ShowDialog() == DialogResult.OK) {
+                formDataSource.Add(new SongModel(addForm.Title, addForm.Author, addForm.Genre, addForm.Year));
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formDataSource.RemoveCurrent();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SongModel sm = formDataSource.Current as SongModel;
+            SongForm editForm = new SongForm(sm);
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                sm.Title = editForm.Title;
+                sm.Author = editForm.Author;
+                sm.Genre = editForm.Genre;
+                sm.Year = editForm.Year;
+            }
+            formDataSource.ResetBindings(false);
+        }
     }
 }
