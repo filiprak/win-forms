@@ -47,8 +47,11 @@
             this.allFilter = new System.Windows.Forms.ToolStripMenuItem();
             this.greater2000Year = new System.Windows.Forms.ToolStripMenuItem();
             this.smaller2000Year = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.numElemsStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // songListView
@@ -65,10 +68,10 @@
             this.songListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.songListView.FullRowSelect = true;
             this.songListView.GridLines = true;
-            this.songListView.Location = new System.Drawing.Point(0, 24);
+            this.songListView.Location = new System.Drawing.Point(0, 0);
             this.songListView.Name = "songListView";
             this.songListView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.songListView.Size = new System.Drawing.Size(549, 282);
+            this.songListView.Size = new System.Drawing.Size(549, 306);
             this.songListView.TabIndex = 0;
             this.songListView.UseCompatibleStateImageBehavior = false;
             this.songListView.View = System.Windows.Forms.View.Details;
@@ -99,6 +102,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(549, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
             // 
             // editToolStripMenuItem
             // 
@@ -194,19 +198,41 @@
             this.smaller2000Year.Text = "Year <= 2000";
             this.smaller2000Year.Click += new System.EventHandler(this.smaller2000Year_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.numElemsStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 284);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(549, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Visible = false;
+            // 
+            // numElemsStripStatusLabel1
+            // 
+            this.numElemsStripStatusLabel1.Name = "numElemsStripStatusLabel1";
+            this.numElemsStripStatusLabel1.Size = new System.Drawing.Size(503, 17);
+            this.numElemsStripStatusLabel1.Spring = true;
+            this.numElemsStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ListViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 306);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.songListView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ListViewForm";
             this.Text = "ListViewForm";
+            this.Activated += new System.EventHandler(this.ListViewForm_Activated);
+            this.Deactivate += new System.EventHandler(this.ListViewForm_Deactivate);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,7 +240,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView songListView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -232,6 +257,9 @@
         private System.Windows.Forms.ToolStripMenuItem allFilter;
         private System.Windows.Forms.ToolStripMenuItem greater2000Year;
         private System.Windows.Forms.ToolStripMenuItem smaller2000Year;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel numElemsStripStatusLabel1;
+        private System.Windows.Forms.ListView songListView;
 
     }
 }

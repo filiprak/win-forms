@@ -23,7 +23,7 @@ namespace win_forms
     public partial class RootForm : Form
     {
         // document data
-        private List<SongModel> data = new List<SongModel>();
+        private readonly List<SongModel> data = new List<SongModel>();
 
         public RootForm()
         {
@@ -92,6 +92,20 @@ namespace win_forms
                     view.RemoveData(song);
             }
             return false;
+        }
+
+        public void MergeToolstrips(ToolStrip menu, ToolStrip status)
+        {
+            this.statusStrip1.Visible = true;
+            ToolStripManager.Merge(menu, this.menuStrip1.Name);
+            ToolStripManager.Merge(status, this.statusStrip1.Name);
+        }
+
+        public void RevertMergeToolstrips()
+        {
+            ToolStripManager.RevertMerge(this.menuStrip1.Name);
+            ToolStripManager.RevertMerge(this.statusStrip1.Name);
+            this.statusStrip1.Visible = false;
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)

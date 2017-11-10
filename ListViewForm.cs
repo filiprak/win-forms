@@ -9,17 +9,29 @@ using System.Windows.Forms;
 
 namespace win_forms
 {
+    public enum FilterType
+    {
+        All, Greater2000, SmOrEq2000
+    }
+
     public partial class ListViewForm : Form, ViewInterface
     {
+        // reference to data in root document list of all songs
+        private List<SongModel> data_ref;
+        public String window_title = "List View";
+
         public ListViewForm(Form mdiParent)
         {
             InitializeComponent();
-            
             this.MdiParent = mdiParent;
+            this.ClearFilterChecks();
+            this.allFilter.Checked = true;
+            this.Text = this.window_title + " - " + this.allFilter.Text;
         }
 
         public void Open(List<SongModel> initData)
         {
+            this.data_ref = initData;
             foreach (SongModel data in initData)
             {
                 ListViewItem record = new ListViewItem();
@@ -28,19 +40,20 @@ namespace win_forms
             }
             songListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             songListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.UpdateStatusStrip();
             this.Show();
         }
 
         public bool AddData(SongModel song)
         {
-            foreach (ListViewItem record in this.songListView.Items)
-            {
-                if (record.Tag == song)
-                    return false;
-            }
+            if (!CheckFilterCondition(song, GetCurrentFilterType()))
+                return false;
+            if (CheckSongPresence(song) != null)
+                return false;
             ListViewItem newrecord = new ListViewItem();
             SmartItemUpdate(newrecord, song, new change(true));
             this.songListView.Items.Add(newrecord);
+            this.UpdateStatusStrip();
             return true;
         }
         public bool RemoveData(SongModel song)
@@ -50,6 +63,7 @@ namespace win_forms
                 if (record.Tag == song)
                 {
                     this.songListView.Items.Remove(record);
+                    this.UpdateStatusStrip();
                     return true;
                 }
             }
@@ -57,15 +71,21 @@ namespace win_forms
         }
         public bool ModifyData(SongModel dest, SongModel src, change mask)
         {
-            foreach (ListViewItem record in this.songListView.Items)
+            ListViewItem record = CheckSongPresence(dest);
+            bool song_on_list = (record != null);
+            if (song_on_list && !CheckFilterCondition(src, GetCurrentFilterType()))
             {
-                if (record.Tag == dest)
-                {
-                    SmartItemUpdate(record, src, mask);
-                    return true;
-                }
+                this.RemoveData(dest);
+                return false;
             }
-            return false;
+            else if (!song_on_list && CheckFilterCondition(src, GetCurrentFilterType()))
+            {
+                this.AddData(dest);
+                return true;
+            }
+            if (song_on_list)
+                SmartItemUpdate(record, src, mask);
+            return true;
         }
 
         private void SmartItemUpdate(ListViewItem record, SongModel song, change mask) {
@@ -86,6 +106,17 @@ namespace win_forms
         public void Exit()
         {
             
+        }
+
+        public FilterType GetCurrentFilterType()
+        {
+            if (this.allFilter.Checked)
+                return FilterType.All;
+            if (this.greater2000Year.Checked)
+                return FilterType.Greater2000;
+            if (this.smaller2000Year.Checked)
+                return FilterType.SmOrEq2000;
+            return FilterType.All;
         }
 
         private void newSongToolStripMenuItem_Click(object sender, EventArgs e)
@@ -125,6 +156,45 @@ namespace win_forms
             }
         }
 
+        public void FilterSongs(FilterType ftype)
+        {
+            foreach (SongModel song in this.data_ref)
+            {
+                bool song_on_list = (CheckSongPresence(song) != null);
+                if (!song_on_list && CheckFilterCondition(song, ftype))
+                    this.AddData(song);
+                else if (song_on_list && !CheckFilterCondition(song, ftype))
+                    this.RemoveData(song);
+            }
+            this.UpdateStatusStrip();
+        }
+
+        private ListViewItem CheckSongPresence(SongModel song)
+        {
+            foreach (ListViewItem item in this.songListView.Items)
+            {
+                if (item.Tag == song)
+                    return item;
+            }
+            return null;
+        }
+
+        private bool CheckFilterCondition(SongModel song, FilterType ftype)
+        {
+            if (ftype == FilterType.All)
+                return true;
+            if (ftype == FilterType.Greater2000)
+                return song.Year > 2000;
+            if (ftype == FilterType.SmOrEq2000)
+                return song.Year <= 2000;
+            return true;
+        }
+
+        public void UpdateStatusStrip()
+        {
+            this.numElemsStripStatusLabel1.Text = String.Format("{0}: {1}", "Number of songs", this.songListView.Items.Count);
+        }
+
         private void ClearFilterChecks()
         {
             this.greater2000Year.Checked = this.smaller2000Year.Checked = this.allFilter.Checked = false;
@@ -138,23 +208,36 @@ namespace win_forms
 
         private void greater2000Year_Click(object sender, EventArgs e)
         {
-            //todo
             this.ClearFilterChecks();
             this.greater2000Year.Checked = true;
+            this.Text = this.window_title + " - " + this.greater2000Year.Text;
+            this.FilterSongs(FilterType.Greater2000);
         }
 
         private void allFilter_Click(object sender, EventArgs e)
         {
-            //todo
             this.ClearFilterChecks();
             this.allFilter.Checked = true;
+            this.Text = this.window_title + " - " + this.allFilter.Text;
+            this.FilterSongs(FilterType.All);
         }
 
         private void smaller2000Year_Click(object sender, EventArgs e)
         {
-            //todo
             this.ClearFilterChecks();
             this.smaller2000Year.Checked = true;
+            this.Text = this.window_title + " - " + this.smaller2000Year.Text;
+            this.FilterSongs(FilterType.SmOrEq2000);
+        }
+
+        private void ListViewForm_Activated(object sender, EventArgs e)
+        {
+            (this.MdiParent as RootForm).MergeToolstrips(this.menuStrip1, this.statusStrip1);
+        }
+
+        private void ListViewForm_Deactivate(object sender, EventArgs e)
+        {
+            (this.MdiParent as RootForm).RevertMergeToolstrips();
         }
     }
 }

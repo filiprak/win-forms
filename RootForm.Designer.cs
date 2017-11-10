@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.newViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +49,25 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.fileToolStripMenuItem.Text = "Menu";
             this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
+            // 
+            // newViewToolStripMenuItem
+            // 
+            this.newViewToolStripMenuItem.Name = "newViewToolStripMenuItem";
+            this.newViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newViewToolStripMenuItem.Text = "New View";
+            this.newViewToolStripMenuItem.Click += new System.EventHandler(this.newViewToolStripMenuItem_Click);
+            // 
+            // closeViewToolStripMenuItem
+            // 
+            this.closeViewToolStripMenuItem.Name = "closeViewToolStripMenuItem";
+            this.closeViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeViewToolStripMenuItem.Text = "Close View";
+            this.closeViewToolStripMenuItem.Click += new System.EventHandler(this.closeViewToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
@@ -66,30 +86,21 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // toolStripSeparator1
+            // statusStrip1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // newViewToolStripMenuItem
-            // 
-            this.newViewToolStripMenuItem.Name = "newViewToolStripMenuItem";
-            this.newViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newViewToolStripMenuItem.Text = "New View";
-            this.newViewToolStripMenuItem.Click += new System.EventHandler(this.newViewToolStripMenuItem_Click);
-            // 
-            // closeViewToolStripMenuItem
-            // 
-            this.closeViewToolStripMenuItem.Name = "closeViewToolStripMenuItem";
-            this.closeViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.closeViewToolStripMenuItem.Text = "Close View";
-            this.closeViewToolStripMenuItem.Click += new System.EventHandler(this.closeViewToolStripMenuItem_Click);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 363);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(931, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Visible = false;
             // 
             // RootForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 385);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
@@ -112,6 +123,7 @@
         private System.Windows.Forms.ToolStripMenuItem newViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
 
 
 
