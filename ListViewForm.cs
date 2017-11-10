@@ -239,5 +239,30 @@ namespace win_forms
         {
             (this.MdiParent as RootForm).RevertMergeToolstrips();
         }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.newSongToolStripMenuItem_Click(sender, e);
+        }
+
+        private void modifyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.modifyToolStripMenuItem_Click(sender, e);
+        }
+
+        private void removeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.removeToolStripMenuItem_Click(sender, e);
+        }
+
+        private void duplicateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (songListView.SelectedItems.Count > 0)
+            {
+                SongModel song = (SongModel)songListView.SelectedItems[0].Tag;
+                RootForm rf = this.MdiParent as RootForm;
+                rf.AddNewSong(new SongModel(song.Title, song.Author, song.Genre, song.Year));
+            }
+        }
     }
 }
