@@ -51,11 +51,6 @@ namespace win_forms
                 DialogResult = DialogResult.OK;
         }
 
-        private void authorTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void authorTextBox_Validating(object sender, CancelEventArgs e)
         {
             if (authorTextBox.Text.Length > 0)
@@ -86,6 +81,44 @@ namespace win_forms
                 genreTextBox.Text = _song.Genre;
                 dateTextBox.Text = _song.Year.ToString();
             }
+        }
+
+        private void genreTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (genreTextBox.Text.Length > 0)
+                return;
+            e.Cancel = true;
+            errorProvider1.SetError(genreTextBox, "Empty field");
+        }
+
+        private void dateTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                int year = int.Parse(dateTextBox.Text);
+                if (year < 0 || year > 2020)
+                    throw new Exception("Incorrect song recording year value.");
+            }
+            catch (Exception exception)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(dateTextBox, exception.Message);
+            }
+        }
+
+        private void titleTextBox_Validated(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(titleTextBox, "");
+        }
+
+        private void genreTextBox_Validated(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(genreTextBox, "");
+        }
+
+        private void dateTextBox_Validated(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(dateTextBox, "");
         }
     }
 }

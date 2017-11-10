@@ -41,52 +41,61 @@
             this.okBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.66125F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.33875F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.genreTextBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.genreLabel, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.dateLabel, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.authorTextBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.titleTextBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.dateTextBox, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.titleLabel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.authorLabel, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.titleTextBox, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.authorTextBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.authorLabel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.titleLabel, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(372, 102);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(375, 205);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // genreTextBox
             // 
-            this.genreTextBox.CausesValidation = false;
-            this.genreTextBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.genreTextBox.Location = new System.Drawing.Point(94, 53);
+            this.genreTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.genreTextBox.Location = new System.Drawing.Point(98, 83);
+            this.genreTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 40, 3);
+            this.genreTextBox.Multiline = true;
             this.genreTextBox.Name = "genreTextBox";
-            this.genreTextBox.Size = new System.Drawing.Size(213, 20);
+            this.genreTextBox.Size = new System.Drawing.Size(227, 29);
             this.genreTextBox.TabIndex = 2;
+            this.genreTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.genreTextBox_Validating);
+            this.genreTextBox.Validated += new System.EventHandler(this.genreTextBox_Validated);
             // 
             // genreLabel
             // 
             this.genreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.genreLabel.AutoSize = true;
-            this.genreLabel.Location = new System.Drawing.Point(3, 50);
+            this.genreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.genreLabel.Location = new System.Drawing.Point(13, 80);
             this.genreLabel.Name = "genreLabel";
-            this.genreLabel.Size = new System.Drawing.Size(36, 25);
+            this.genreLabel.Size = new System.Drawing.Size(41, 35);
             this.genreLabel.TabIndex = 5;
             this.genreLabel.Text = "Genre";
             this.genreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -96,52 +105,59 @@
             this.dateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dateLabel.AutoSize = true;
-            this.dateLabel.Location = new System.Drawing.Point(3, 75);
+            this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dateLabel.Location = new System.Drawing.Point(13, 115);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(68, 27);
+            this.dateLabel.Size = new System.Drawing.Size(79, 35);
             this.dateLabel.TabIndex = 6;
             this.dateLabel.Text = "Record Date";
             this.dateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // authorTextBox
             // 
-            this.authorTextBox.CausesValidation = false;
-            this.authorTextBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.authorTextBox.Location = new System.Drawing.Point(94, 3);
+            this.authorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.authorTextBox.Location = new System.Drawing.Point(98, 48);
+            this.authorTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 40, 3);
+            this.authorTextBox.Multiline = true;
             this.authorTextBox.Name = "authorTextBox";
-            this.authorTextBox.Size = new System.Drawing.Size(213, 20);
+            this.authorTextBox.Size = new System.Drawing.Size(227, 29);
             this.authorTextBox.TabIndex = 1;
-            this.authorTextBox.TextChanged += new System.EventHandler(this.authorTextBox_TextChanged);
             this.authorTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.authorTextBox_Validating);
             this.authorTextBox.Validated += new System.EventHandler(this.authorTextBox_Validated);
             // 
             // titleTextBox
             // 
-            this.titleTextBox.CausesValidation = false;
-            this.titleTextBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.titleTextBox.Location = new System.Drawing.Point(94, 28);
+            this.titleTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.titleTextBox.Location = new System.Drawing.Point(98, 13);
+            this.titleTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 40, 3);
+            this.titleTextBox.Multiline = true;
             this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(213, 20);
+            this.titleTextBox.Size = new System.Drawing.Size(227, 29);
             this.titleTextBox.TabIndex = 0;
             this.titleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.titleTextBox_Validating);
+            this.titleTextBox.Validated += new System.EventHandler(this.titleTextBox_Validated);
             // 
             // dateTextBox
             // 
-            this.dateTextBox.CausesValidation = false;
-            this.dateTextBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dateTextBox.Location = new System.Drawing.Point(94, 78);
+            this.dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTextBox.Location = new System.Drawing.Point(98, 118);
+            this.dateTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 40, 3);
+            this.dateTextBox.Multiline = true;
             this.dateTextBox.Name = "dateTextBox";
-            this.dateTextBox.Size = new System.Drawing.Size(213, 20);
+            this.dateTextBox.Size = new System.Drawing.Size(227, 29);
             this.dateTextBox.TabIndex = 8;
+            this.dateTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dateTextBox_Validating);
+            this.dateTextBox.Validated += new System.EventHandler(this.dateTextBox_Validated);
             // 
             // titleLabel
             // 
             this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Location = new System.Drawing.Point(3, 25);
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.titleLabel.Location = new System.Drawing.Point(13, 10);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(27, 25);
+            this.titleLabel.Size = new System.Drawing.Size(32, 35);
             this.titleLabel.TabIndex = 3;
             this.titleLabel.Text = "Title";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -151,16 +167,19 @@
             this.authorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.authorLabel.AutoSize = true;
-            this.authorLabel.Location = new System.Drawing.Point(3, 0);
+            this.authorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.authorLabel.Location = new System.Drawing.Point(13, 45);
             this.authorLabel.Name = "authorLabel";
-            this.authorLabel.Size = new System.Drawing.Size(38, 25);
+            this.authorLabel.Size = new System.Drawing.Size(44, 35);
             this.authorLabel.TabIndex = 4;
             this.authorLabel.Text = "Author";
             this.authorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // okBtn
             // 
-            this.okBtn.Location = new System.Drawing.Point(306, 149);
+            this.okBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.okBtn.Location = new System.Drawing.Point(155, 19);
+            this.okBtn.Margin = new System.Windows.Forms.Padding(3, 3, 40, 3);
             this.okBtn.Name = "okBtn";
             this.okBtn.Size = new System.Drawing.Size(75, 23);
             this.okBtn.TabIndex = 1;
@@ -170,8 +189,10 @@
             // 
             // cancelBtn
             // 
+            this.cancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelBtn.CausesValidation = false;
             this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelBtn.Location = new System.Drawing.Point(225, 149);
+            this.cancelBtn.Location = new System.Drawing.Point(74, 19);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 2;
@@ -182,14 +203,28 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.Controls.Add(this.cancelBtn, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.okBtn, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(95, 150);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(270, 45);
+            this.tableLayoutPanel2.TabIndex = 9;
+            // 
             // SongForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelBtn;
-            this.ClientSize = new System.Drawing.Size(396, 191);
-            this.Controls.Add(this.cancelBtn);
-            this.Controls.Add(this.okBtn);
+            this.ClientSize = new System.Drawing.Size(375, 205);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SongForm";
             this.Text = "SongForm";
@@ -197,6 +232,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -215,5 +251,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TextBox authorTextBox;
         private System.Windows.Forms.TextBox titleTextBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }
