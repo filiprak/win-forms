@@ -38,6 +38,13 @@ namespace win_forms
             get { return int.Parse(dateTextBox.Text); }
         }
 
+        public SongModel Song
+        {
+            get {
+                return new SongModel(Title, Author, Genre, Year);
+            }
+        }
+
         private void okBtn_Click(object sender, EventArgs e)
         {
             if (ValidateChildren())

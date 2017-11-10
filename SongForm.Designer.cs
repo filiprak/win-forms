@@ -67,11 +67,12 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(369, 102);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(372, 102);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // genreTextBox
             // 
+            this.genreTextBox.CausesValidation = false;
             this.genreTextBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.genreTextBox.Location = new System.Drawing.Point(94, 53);
             this.genreTextBox.Name = "genreTextBox";
@@ -104,6 +105,7 @@
             // 
             // authorTextBox
             // 
+            this.authorTextBox.CausesValidation = false;
             this.authorTextBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.authorTextBox.Location = new System.Drawing.Point(94, 3);
             this.authorTextBox.Name = "authorTextBox";
@@ -115,6 +117,7 @@
             // 
             // titleTextBox
             // 
+            this.titleTextBox.CausesValidation = false;
             this.titleTextBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.titleTextBox.Location = new System.Drawing.Point(94, 28);
             this.titleTextBox.Name = "titleTextBox";
@@ -124,6 +127,7 @@
             // 
             // dateTextBox
             // 
+            this.dateTextBox.CausesValidation = false;
             this.dateTextBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.dateTextBox.Location = new System.Drawing.Point(94, 78);
             this.dateTextBox.Name = "dateTextBox";
@@ -183,7 +187,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelBtn;
-            this.ClientSize = new System.Drawing.Size(393, 184);
+            this.ClientSize = new System.Drawing.Size(396, 191);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.tableLayoutPanel1);
