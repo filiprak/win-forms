@@ -54,12 +54,8 @@ namespace win_forms
         private void OpenNewView() {
             ViewInterface newMDIChild = new ListViewForm(this);
             // Display the new form.
+            (newMDIChild as Form).FormClosing += child_FormClosing;
             newMDIChild.Open(this.data);
-        }
-
-        public int GetNumChildren()
-        {
-            return this.MdiChildren.Length;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,16 +63,6 @@ namespace win_forms
             foreach (ViewInterface view in this.MdiChildren)
                 view.Exit();
             Application.Exit();
-        }
-
-        private void windowToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenNewView();
         }
 
         public bool AddNewSong(SongModel song) {
@@ -113,5 +99,24 @@ namespace win_forms
 
         }
 
+        private void newViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenNewView();
+        }
+
+        private void closeViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form activeChild = this.ActiveMdiChild;
+            activeChild.Close();
+        }
+
+        void child_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.MdiChildren.Length < 2 && e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                MessageBox.Show("At least one view window must be displayed!");
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace win_forms
         public ListViewForm(Form mdiParent)
         {
             InitializeComponent();
+            
             this.MdiParent = mdiParent;
         }
 
@@ -25,6 +26,8 @@ namespace win_forms
                 SmartItemUpdate(record, data, new change(true));
                 this.songListView.Items.Add(record);
             }
+            songListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            songListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             this.Show();
         }
 
@@ -82,8 +85,7 @@ namespace win_forms
 
         public void Exit()
         {
-            if (this.MdiParent.MdiChildren.Length < 2)
-                MessageBox.Show("");
+            
         }
 
         private void newSongToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,6 +123,38 @@ namespace win_forms
                     rf.ModifySong(song, editedSong, mask);
                 }
             }
+        }
+
+        private void ClearFilterChecks()
+        {
+            this.greater2000Year.Checked = this.smaller2000Year.Checked = this.allFilter.Checked = false;
+
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void greater2000Year_Click(object sender, EventArgs e)
+        {
+            //todo
+            this.ClearFilterChecks();
+            this.greater2000Year.Checked = true;
+        }
+
+        private void allFilter_Click(object sender, EventArgs e)
+        {
+            //todo
+            this.ClearFilterChecks();
+            this.allFilter.Checked = true;
+        }
+
+        private void smaller2000Year_Click(object sender, EventArgs e)
+        {
+            //todo
+            this.ClearFilterChecks();
+            this.smaller2000Year.Checked = true;
         }
     }
 }
