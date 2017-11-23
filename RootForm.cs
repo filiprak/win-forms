@@ -32,21 +32,18 @@ namespace win_forms
 
         private void RootForm_Load(object sender, EventArgs e)
         {
-            data.Add(new SongModel("Paradise", "Coldplay", "soft-rock", 2011));
-            data.Add(new SongModel("Nothing Else Matters", "Metallica", "rock-metal", 1991));
+            data.Add(new SongModel("Paradise", "Coldplay", "rock", 2011));
             data.Add(new SongModel("Sweet Child O'Mine", "Guns N'Roses", "rock", 1987));
-            data.Add(new SongModel("Paradise", "Coldplay", "soft-rock", 2011));
-            data.Add(new SongModel("Nothing Else Matters", "Metallica", "rock-metal", 1991));
-            data.Add(new SongModel("Paradise", "Coldplay", "soft-rock", 2011));
-            data.Add(new SongModel("Nothing Else Matters", "Metallica", "rock-metal", 1991));
-            data.Add(new SongModel("Paradise", "Coldplay", "soft-rock", 2011));
-            data.Add(new SongModel("Nothing Else Matters", "Metallica", "rock-metal", 1991));
+            data.Add(new SongModel("Thunder", "Imagine Dragons", "pop", 2017));
+            data.Add(new SongModel("Smooth Criminal", "Michael Jackson", "pop", 1987));
+            data.Add(new SongModel("Blue Bossa", "Kenny Dorham", "jazz", 1963));
+            data.Add(new SongModel("Watermelon Man", "Herbie Hancock", "jazz", 1962));
+            data.Add(new SongModel("Paradise", "Coldplay", "rock", 2011));
             data.Add(new SongModel("Sweet Child O'Mine", "Guns N'Roses", "rock", 1987));
-            data.Add(new SongModel("Paradise", "Coldplay", "soft-rock", 2011));
-            data.Add(new SongModel("Nothing Else Matters", "Metallica", "rock-metal", 1991));
-            data.Add(new SongModel("Sweet Child O'Mine", "Guns N'Roses", "rock", 1987));
-            data.Add(new SongModel("Sweet Child O'Mine", "Guns N'Roses", "rock", 1987));
-            data.Add(new SongModel("Sweet Child O'Mine", "Guns N'Roses", "rock", 1987));
+            data.Add(new SongModel("Thunder", "Imagine Dragons", "pop", 2017));
+            data.Add(new SongModel("Smooth Criminal", "Michael Jackson", "pop", 1987));
+            data.Add(new SongModel("Blue Bossa", "Kenny Dorham", "jazz", 1963));
+            data.Add(new SongModel("Watermelon Man", "Herbie Hancock", "jazz", 1962));
 
             OpenNewView();
         }

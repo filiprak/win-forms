@@ -30,7 +30,7 @@ namespace win_forms
 
         public string Genre
         {
-            get { return genreTextBox.Text; }
+            get { return this.genreControl1.Genre; }
         }
 
         public int Year
@@ -78,17 +78,14 @@ namespace win_forms
             {
                 titleTextBox.Text = _song.Title;
                 authorTextBox.Text = _song.Author;
-                genreTextBox.Text = _song.Genre;
+                genreControl1.Genre = _song.Genre;
                 dateTextBox.Text = _song.Year.ToString();
             }
         }
 
         private void genreTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (genreTextBox.Text.Length > 0)
-                return;
-            e.Cancel = true;
-            errorProvider1.SetError(genreTextBox, "Empty field");
+
         }
 
         private void dateTextBox_Validating(object sender, CancelEventArgs e)
@@ -113,12 +110,17 @@ namespace win_forms
 
         private void genreTextBox_Validated(object sender, EventArgs e)
         {
-            errorProvider1.SetError(genreTextBox, "");
+
         }
 
         private void dateTextBox_Validated(object sender, EventArgs e)
         {
             errorProvider1.SetError(dateTextBox, "");
+        }
+
+        private void genreControl1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

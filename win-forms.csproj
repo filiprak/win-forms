@@ -59,6 +59,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenreControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GenreControl.Designer.cs">
+      <DependentUpon>GenreControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenreEditor.cs" />
     <Compile Include="ListViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +88,9 @@
     </Compile>
     <Compile Include="SongModel.cs" />
     <Compile Include="ViewInterface.cs" />
+    <EmbeddedResource Include="GenreControl.resx">
+      <DependentUpon>GenreControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ListViewForm.resx">
       <DependentUpon>ListViewForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +102,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RootForm.resx">
       <DependentUpon>RootForm.cs</DependentUpon>
@@ -131,6 +142,15 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jazz.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pop.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rock.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
